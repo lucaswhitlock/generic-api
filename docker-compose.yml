@@ -22,8 +22,8 @@ services:
       JWT_TOKEN_PREFIX: "Bearer"
       JWT_HEADER_STRING: "Authorization"
     networks:
-      - app-network
+      - default_datalake_network
 
 networks:
-  app-network:
-    driver: bridge
+  default_datalake_network:
+    external: true
