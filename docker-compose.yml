@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: app
+    image: devlucaswhitlock/generic-api
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:sqlserver://mssqlserver:1433;databaseName=default_db"
+      SPRING_DATASOURCE_USERNAME: "sa"
+      SPRING_DATASOURCE_PASSWORD: "CorrectHorseBatteryStapleFor_"
+      SPRING_JPA_SHOW-SQL: "false"
+      SPRING_JPA_HIBERNATE_DDL-AUTO: "update"
+      SPRING_JPA_DATABASE-PLATFORM: "org.hibernate.dialect.SQLServerDialect"
+      JWT_TOKEN_VALIDITY: "14400"
+      JWT_SIGNING_KEY: "%51GN1NG%_%K3Y%"
+      JWT_AUTHORITIES_KEY: "roles"
+      JWT_TOKEN_PREFIX: "Bearer"
+      JWT_HEADER_STRING: "Authorization"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
