@@ -47,17 +47,5 @@ public class UserController extends AbstractCrudController<User> {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void create(@RequestBody User entity) {
         this.getService().create(entity);
-
-        int n = 10100;
-
-        String binary = Integer.toBinaryString(n);
-        int iterator = 0;
-
-        while(binary.charAt(iterator) == '1') {
-            
-        }
-        
-
     }
-
 }
